@@ -1,0 +1,33 @@
+node_modules/
+        .env
+        .DS_Store
+        ```
+4.  **Add Remote:** Replace the URL with your actual repo link.
+    ```bash
+    git remote add origin https://github.com/your-username/your-repo-name.git
+    ```
+
+### 3. Build the "Election Assistant" Logic
+In your `app.js` (if using Node.js), you’ll want to integrate the API key you generated in **Screenshot 2026-05-01 at 5.26.06 PM.jpg**.
+
+*   **Install SDK:** Run `npm install @google/generative-ai express dotenv`.
+*   **Code Template:**
+    ```javascript
+    const { GoogleGenerativeAI } = require("@google/generative-ai");
+    require('dotenv').config();
+
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+    // Add logic to handle election questions here...
+    ```
+
+### 4. Prepare for Cloud Run (The `Dockerfile`)
+Google Cloud Run needs to know how to "start" your app. Create a file named `Dockerfile` (no extension) and paste this:
+
+```dockerfile
+FROM node:18
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD ["node", "app.js"]
