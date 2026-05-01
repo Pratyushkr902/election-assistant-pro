@@ -88,9 +88,8 @@
 </div>
 
 <script>
-const GEMINI_KEY = "REPLACE_WITH_YOUR_KEY";
-const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`;
-
+const GEMINI_KEY = "";  // empty - key is now on server
+const API_URL = "/api/chat";  // calls your serverless function
 const SYSTEM = `You are ElectED, a friendly and knowledgeable Election Education Assistant specializing in Indian elections. 
 Your role is to help citizens understand:
 - The complete election process step by step
